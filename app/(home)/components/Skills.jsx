@@ -1,0 +1,186 @@
+"use client";
+import React from "react";
+import { motion } from "framer-motion";
+import TechRadarChart from "@/app/(home)/components/charts/TechSkillChart";
+import SoftRadarChart from "@/app/(home)/components/charts/SoftSkillChart";
+import { HiChip, HiSparkles } from "react-icons/hi";
+import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
+import { config } from "@/config";
+
+/* ------------------ Utils ------------------ */
+
+const getLevelPercentage = (level) => {
+  switch (level) {
+    case "Expert":
+      return 95;
+    case "Advanced":
+      return 85;
+    case "Intermediate":
+      return 70;
+    case "Beginner":
+      return 50;
+    default:
+      return 75;
+  }
+};
+
+const containerAnimation = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 },
+  },
+};
+
+const itemAnimation = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: [0.23, 1, 0.32, 1] },
+  },
+};
+
+/* ------------------ Skill Card ------------------ */
+
+const SkillCard = ({ skill, bgClass }) => {
+  const levelPercentage = getLevelPercentage(skill.level);
+
+  const gradientClass =
+    {
+      "bg-blue-500/10": "from-blue-500/80 to-blue-500",
+      "bg-emerald-500/10": "from-emerald-500/80 to-emerald-500",
+      "bg-orange-500/10": "from-orange-500/80 to-orange-500",
+    }[bgClass] || "from-primary/80 to-primary";
+
+  return (
+    <motion.div variants={itemAnimation}>
+      <div className="p-4 rounded-xl border border-zinc-800/50 hover:border-zinc-700/50 transition">
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="text-sm font-medium text-primary">{skill.name}</h3>
+
+          {skill.hot && (
+            <Badge className="bg-amber-500/10 text-amber-500 border-none text-xs">
+              <HiSparkles className="w-3 h-3 mr-1" />
+              Hot
+            </Badge>
+          )}
+        </div>
+
+        <div className="h-1.5 bg-zinc-800/50 rounded-full overflow-hidden">
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: `${levelPercentage}%` }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className={cn(
+              "h-full bg-gradient-to-r rounded-full",
+              gradientClass
+            )}
+          />
+        </div>
+
+        <div className="mt-2 flex justify-between text-xs">
+          <span className="text-muted-foreground">Proficiency</span>
+          <span className="font-medium text-primary">{skill.level}</span>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+/* ------------------ Category Section ------------------ */
+
+const CategorySection = ({ category }) => (
+  <div className="space-y-6">
+    <div className="flex items-center gap-3">
+      <div className={cn("p-2.5 rounded-xl", category.bgClass)}>
+        {category.icon}
+      </div>
+
+      <div>
+        <h3 className="text-xl font-semibold text-primary">{category.title}</h3>
+        <p className="text-sm text-muted-foreground">{category.description}</p>
+      </div>
+    </div>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {category.skills.map((skill, idx) => (
+        <SkillCard key={idx} skill={skill} bgClass={category.bgClass} />
+      ))}
+    </div>
+  </div>
+);
+
+/* ------------------ MAIN SECTION ------------------ */
+
+const SkillsSection = () => {
+  const skills = config.skills;
+
+  return (
+    <section className="py-24" id="skills">
+      <div className="container mx-auto px-6">
+        <motion.div
+          variants={containerAnimation}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="space-y-20"
+        >
+          {/* Header */}
+          <div className="max-w-2xl mx-auto text-center space-y-6">
+            <motion.div
+              variants={itemAnimation}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-zinc-800 bg-secondary/10"
+            >
+              <HiChip className="w-5 h-5" />
+              <span className="text-sm font-medium">Skills & Technologies</span>
+            </motion.div>
+
+            <motion.div variants={itemAnimation}>
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
+                Professional Arsenal
+              </h2>
+              <p className="text-muted-foreground mt-2">
+                A visual overview of my strengths, followed by detailed skill
+                breakdowns.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Radar Charts Row (Technical + Soft Skills) */}
+          <motion.div
+            variants={itemAnimation}
+            className="w-full max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-12"
+          >
+            {/* Technical Skills Chart */}
+            <div className="w-full md:w-1/2 h-[420px]">
+              <p className="text-center text-muted-foreground mt-2">
+                Technical Skills
+              </p>
+              <TechRadarChart />
+            </div>
+
+            {/* Soft Skills Chart */}
+            <div className="w-full md:w-1/2 h-[420px]">
+              <p className="text-center text-muted-foreground mt-2">
+                Soft Skills
+              </p>
+              <SoftRadarChart />
+            </div>
+          </motion.div>
+
+          {/* Categories */}
+          <motion.div variants={containerAnimation} className="space-y-16">
+            {skills.map((category, index) => (
+              <CategorySection key={index} category={category} />
+            ))}
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default SkillsSection;
