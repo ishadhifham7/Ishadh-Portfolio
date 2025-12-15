@@ -15,7 +15,7 @@ const ContactForm = ({ onSubmit }) => {
   } = useForm();
 
   const formRef = useRef();
-//   console.log(`env : ${process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID}`)
+  //   console.log(`env : ${process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID}`)
 
   const onSubmitHandler = async (data) => {
     await onSubmit(data);
@@ -30,12 +30,19 @@ const ContactForm = ({ onSubmit }) => {
   };
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit(onSubmitHandler)} className="space-y-6">
+    <form
+      ref={formRef}
+      onSubmit={handleSubmit(onSubmitHandler)}
+      className="space-y-6"
+    >
       <div className="space-y-4">
         {/* Name and Email in a 2-column grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-2">
-            <label htmlFor="name" className="text-sm font-medium text-muted-foreground block">
+            <label
+              htmlFor="name"
+              className="text-sm font-medium text-muted-foreground block"
+            >
               Your Name
             </label>
             <Input
@@ -43,7 +50,7 @@ const ContactForm = ({ onSubmit }) => {
               id="name"
               type="text"
               name="name"
-              placeholder="Huzaif"
+              placeholder="Ishadh Ifham"
               className="rounded-lg border-primary/20 w-full"
             />
             {errors.name && (
@@ -54,7 +61,10 @@ const ContactForm = ({ onSubmit }) => {
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="email" className="text-sm font-medium text-muted-foreground block">
+            <label
+              htmlFor="email"
+              className="text-sm font-medium text-muted-foreground block"
+            >
               Email
             </label>
             <Input
@@ -68,7 +78,7 @@ const ContactForm = ({ onSubmit }) => {
               id="email"
               type="email"
               name="email"
-              placeholder="huzaif@example.com"
+              placeholder="ishadh@example.com"
               className="rounded-lg border-primary/20 w-full"
             />
             {errors.email && (
@@ -81,7 +91,10 @@ const ContactForm = ({ onSubmit }) => {
 
         {/* Message field - full width */}
         <div className="space-y-2">
-          <label htmlFor="message" className="text-sm font-medium text-muted-foreground block">
+          <label
+            htmlFor="message"
+            className="text-sm font-medium text-muted-foreground block"
+          >
             Message
           </label>
           <Textarea

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { HiExternalLink } from "react-icons/hi";
+import { HiExternalLink, HiCode, HiViewGrid } from "react-icons/hi";
 import { Button } from "@/components/ui/button";
 
 const containerAnimation = {
@@ -147,6 +147,13 @@ const StaticProjects = () => {
     <section className="pb-10 pt-20 relative">
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
         <div className="text-center mb-12">
+          <motion.div
+            variants={itemAnimation}
+            className="inline-flex items-center space-x-2 bg-secondary/10 border-[1.8px] border-zinc-900/70 px-4 py-2 rounded-full text-primary backdrop-blur-sm mb-4"
+          >
+            <HiViewGrid className="w-5 h-5" />
+            <span className="text-sm font-medium">Project Overview</span>
+          </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -160,7 +167,7 @@ const StaticProjects = () => {
             transition={{ delay: 0.1 }}
             className="text-base sm:text-lg text-muted-foreground mt-2"
           >
-            A sneak peek of my projects. Click below to explore all of them.
+            A glimpse of projects I’ve built. Explore the full project list.
           </motion.p>
         </div>
 
