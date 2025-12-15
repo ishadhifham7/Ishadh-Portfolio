@@ -12,7 +12,8 @@ const Home = () => {
   return (
     <div>
       <HeroSection />
-      <ExperienceSection />
+      <GithubProjects />
+      {/*<ExperienceSection />*/}
       <SkillsSection />
 
       {/* Contact Button Section */}

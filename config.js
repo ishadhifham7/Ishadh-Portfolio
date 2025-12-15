@@ -115,6 +115,16 @@ export const config = {
       github: "#",
       demo: "#",
     },
+    {
+      id: 8,
+      title: "Task Manager Application",
+      description:
+        "A desktop application built with Java to manage daily tasks and projects efficiently. Features task creation, prioritization, and tracking to boost productivity.",
+      image: "/projects/java.jpg",
+      technologies: ["Java", "Swing", "OOP", "Desktop App"],
+      github: "#",
+      demo: "#",
+    },
   ],
   skills: [
     {
