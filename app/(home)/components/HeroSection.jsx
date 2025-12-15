@@ -53,7 +53,8 @@ const HeroSection = () => {
         <motion.div
           variants={containerAnimation}
           initial="hidden"
-          animate="show"
+          whileInView="show"
+          viewport={{ once: true }}
           className="max-w-3xl mx-auto text-center space-y-8 relative"
         >
           <motion.div

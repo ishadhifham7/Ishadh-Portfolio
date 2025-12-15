@@ -144,7 +144,7 @@ const ProjectCard = ({ project, size }) => (
 
 const StaticProjects = () => {
   return (
-    <section className="py-20 relative">
+    <section className="pb-10 pt-20 relative">
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
         <div className="text-center mb-12">
           <motion.h2
@@ -167,7 +167,8 @@ const StaticProjects = () => {
         <motion.div
           variants={containerAnimation}
           initial="hidden"
-          animate="show"
+          whileInView="show"
+          viewport={{ once: true }}
           className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-6xl mx-auto"
         >
           {projects.map((project, index) => (
@@ -184,10 +185,10 @@ const StaticProjects = () => {
             variant="outline"
             size="lg"
             asChild
-            className="rounded-full px-8 py-4 text-base sm:text-lg"
+            className="rounded-full px-8 py-4 text-xs sm:text-[15px]"
           >
             <a href="/projects" className="flex items-center gap-2">
-              View All Projects <HiExternalLink />
+              View In Detail <HiExternalLink />
             </a>
           </Button>
         </div>

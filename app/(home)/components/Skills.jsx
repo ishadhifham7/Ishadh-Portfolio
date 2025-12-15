@@ -119,7 +119,7 @@ const SkillsSection = () => {
   const skills = config.skills;
 
   return (
-    <section className="py-24" id="skills">
+    <section className="py-5" id="skills">
       <div className="container mx-auto px-6">
         <motion.div
           variants={containerAnimation}
