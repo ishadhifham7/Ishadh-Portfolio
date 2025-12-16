@@ -59,27 +59,19 @@ const Logo = ({ isMobile = false }) => (
     initial={{ opacity: 0, x: -20 }}
     animate={{ opacity: 1, x: 0 }}
     transition={{ duration: 0.5 }}
+    suppressHydrationWarning
   >
     <Link
       href="/"
       className="flex items-center space-x-2 hover:opacity-90 transition-opacity"
     >
-      {/*<motion.div whileHover={{ opacity: 0.5 }} whileTap={{ scale: 0.95 }}>
-        <svg
-          width="10"
-          height="10"
-          viewBox="0 0 500 500"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M235 120 L265 100 L265 350 L235 380 L235 120Z"
-            fill="white"
-          />
-
-          <path d="M230 70 Q250 50 270 70 Q250 80 230 70Z" fill="white" />
-        </svg>
-      </motion.div>*/}
+      <motion.div whileHover={{ opacity: 0.5 }} whileTap={{ scale: 0.95 }}>
+        <img
+          src="/logo3.png" // path to your image
+          alt="icon"
+          className="w-6 h-6 object-contain"
+        />
+      </motion.div>
       <motion.span
         className={`text-gray-300 font-semibold ${
           isMobile ? "hidden" : "text-base sm:text-lg"
@@ -87,6 +79,7 @@ const Logo = ({ isMobile = false }) => (
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
+        suppressHydrationWarning
       >
         <span className="hidden sm:inline">{config.developer.name} Ifham</span>
         {/* <span className="sm:hidden">{config.developer.name}</span> */}
@@ -103,6 +96,7 @@ const Navigation = ({ isMobile = false, onLinkClick }) => (
     initial={isMobile ? { opacity: 0 } : { opacity: 0, y: -20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ delay: isMobile ? 0 : 0.3, duration: 0.5 }}
+    suppressHydrationWarning
   >
     {NAV_ITEMS.map((item, index) => (
       <motion.div
@@ -111,6 +105,7 @@ const Navigation = ({ isMobile = false, onLinkClick }) => (
         animate={{ opacity: 1, x: 0, y: 0 }}
         transition={{ delay: isMobile ? index * 0.1 : 0.1 * index }}
         onClick={onLinkClick}
+        suppressHydrationWarning
       >
         <NavLink {...item} isMobile={isMobile} />
       </motion.div>
@@ -127,6 +122,7 @@ const ContactButton = ({ isMobile = false, onLinkClick }) => (
     animate={{ opacity: 1, x: 0 }}
     transition={{ delay: isMobile ? 0.5 : 0.4, duration: 0.5 }}
     onClick={onLinkClick}
+    suppressHydrationWarning
   >
     <Link
       href={"https://www.linkedin.com/in/ishadh-ifham-b5a7a2357"}
@@ -201,6 +197,7 @@ const Header = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
+        suppressHydrationWarning
       >
         <div className="container mx-auto flex items-center justify-between md:px-64 px-4 sm:px-6">
           <Logo />
@@ -236,6 +233,7 @@ const Header = () => {
               transition={{ duration: 0.2 }}
               className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 md:hidden"
               onClick={closeMobileMenu}
+              suppressHydrationWarning
             />
 
             {/* Mobile Menu Panel */}
@@ -245,6 +243,7 @@ const Header = () => {
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
               className="fixed top-0 right-0 h-full w-64 bg-black/95 backdrop-blur-md border-l border-white/10 z-50 md:hidden overflow-y-auto"
+              suppressHydrationWarning
             >
               <div className="flex flex-col h-full p-6">
                 {/* Mobile Logo */}
