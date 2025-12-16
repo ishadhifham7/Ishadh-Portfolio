@@ -3,6 +3,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { HiCode, HiArrowRight } from "react-icons/hi";
+import { HiSparkles, HiSmile } from "react-icons/hi2";
 import { config } from "@/config";
 import Link from "next/link";
 import { BackgroundPresets } from "@/components/ui/background-effects";
@@ -61,7 +62,7 @@ const HeroSection = () => {
             variants={itemAnimation}
             className="inline-flex items-center space-x-2 bg-secondary/10 border-[1.8px] border-zinc-900/70 px-4 py-2 rounded-full text-primary backdrop-blur-sm"
           >
-            <HiCode className="w-5 h-5" />
+            <HiSparkles className="w-5 h-5" />
             <span className="text-sm font-medium">Welcome to my portfolio</span>
           </motion.div>
 
