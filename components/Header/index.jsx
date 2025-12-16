@@ -7,6 +7,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
+import {
+  FaDiscord,
+  FaGithub,
+  FaMapPin,
+  FaLinkedin,
+  FaTwitter,
+} from "react-icons/fa";
 
 const NAV_ITEMS = config.NAV_ITEMS;
 
@@ -57,18 +64,22 @@ const Logo = ({ isMobile = false }) => (
       href="/"
       className="flex items-center space-x-2 hover:opacity-90 transition-opacity"
     >
-      {/*<motion.div
-                whileHover={{ opacity:0.5 }}
-                whileTap={{ scale: 0.95 }}
-            >
-                <Image
-                    src="/logo.png"
-                    width={2000}
-                    height={2000}
-                    alt='logo'
-                    className={`${isMobile ? 'w-10 h-10' : 'w-12 h-12 sm:w-14 sm:h-14'} rounded-full`}
-                />
-            </motion.div> */}
+      {/*<motion.div whileHover={{ opacity: 0.5 }} whileTap={{ scale: 0.95 }}>
+        <svg
+          width="10"
+          height="10"
+          viewBox="0 0 500 500"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M235 120 L265 100 L265 350 L235 380 L235 120Z"
+            fill="white"
+          />
+
+          <path d="M230 70 Q250 50 270 70 Q250 80 230 70Z" fill="white" />
+        </svg>
+      </motion.div>*/}
       <motion.span
         className={`text-gray-300 font-semibold ${
           isMobile ? "hidden" : "text-base sm:text-lg"
@@ -110,7 +121,7 @@ const Navigation = ({ isMobile = false, onLinkClick }) => (
 const ContactButton = ({ isMobile = false, onLinkClick }) => (
   <motion.div
     className={`flex items-center ${
-      isMobile ? "w-full justify-center mt-4" : "space-x-6"
+      isMobile ? "w-full justify-center mt-4" : ""
     }`}
     initial={{ opacity: 0, x: isMobile ? 0 : 20 }}
     animate={{ opacity: 1, x: 0 }}
@@ -118,17 +129,55 @@ const ContactButton = ({ isMobile = false, onLinkClick }) => (
     onClick={onLinkClick}
   >
     <Link
-      href={"https://github.com/huzaifahmedz/Huzaif-Ahmed-portfolio-fourth"}
+      href={"https://www.linkedin.com/in/ishadh-ifham-b5a7a2357"}
       target="_blank"
       className={isMobile ? "w-full" : ""}
     >
       <Button
-        className={`${
-          isMobile ? "w-full" : ""
-        } rounded-2xl font-semibold bg-white text-gray-900 hover:bg-gray-200 text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3`}
+        className={`
+    ${isMobile ? "w-full" : ""}
+    rounded-2xl
+    sm:p-5
+    text-xl sm:text-2xl
+    text-white
+    bg-transparent
+    hover:bg-transparent
+    active:bg-transparent
+    focus:bg-transparent
+    hover:scale-110
+    transition-transform duration-200 ease-out
+  `}
       >
-        <span className="hidden sm:inline">Repo Inside!</span>
-        <span className="sm:hidden">Template</span>
+        <FaLinkedin />
+      </Button>
+    </Link>
+
+    {/**/}
+    <Link
+      href={"https://x.com/"}
+      target="_blank"
+      className={isMobile ? "w-full" : ""}
+    >
+      <Button
+        className={`
+    ${isMobile ? "w-full" : ""}
+    rounded-2xl
+    sm:p-5
+    text-xl sm:text-2xl
+    text-white
+    bg-transparent
+    hover:bg-transparent
+    active:bg-transparent
+    focus:bg-transparent
+    hover:scale-110
+    transition-transform duration-200 ease-out
+  `}
+      >
+        <img
+          src="/X2.svg" // Add the X ur that is in the public folder here
+          alt="X / Twitter"
+          className="h-5 w-auto hover:scale-110 transition-transform duration-200 text-white ease-out"
+        />
       </Button>
     </Link>
   </motion.div>
