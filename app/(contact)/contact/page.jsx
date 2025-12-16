@@ -44,8 +44,8 @@ const ContactPage = () => {
             Get In Touch
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-sm sm:text-base px-4">
-            Have a project in mind? Looking to collaborate? Drop me a message,
-            and let's create something amazing together.
+            Got a project in mind or just want to say hi? Drop me a line and
+            I’ll get back to you as soon as I can.
           </p>
         </motion.div>
 
