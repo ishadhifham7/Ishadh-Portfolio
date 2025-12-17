@@ -124,38 +124,26 @@ const ContactButton = ({ isMobile = false, onLinkClick }) => (
     onClick={onLinkClick}
     suppressHydrationWarning
   >
-    <Link
-      href={"https://www.linkedin.com/in/ishadh-ifham-b5a7a2357"}
-      target="_blank"
-      className={isMobile ? "w-full" : ""}
-    >
-      <Button
-        className={`
-    ${isMobile ? "w-full" : ""}
-    rounded-2xl
-    sm:p-5
-    text-xl sm:text-2xl
-    text-white
-    bg-transparent
-    hover:bg-transparent
-    active:bg-transparent
-    focus:bg-transparent
-    hover:scale-110
-    transition-transform duration-200 ease-out
-  `}
+    <div>
+      <a
+        href="/Ishadh Ifham CV.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        download
+        className="inline-flex items-center gap-2 rounded-xl border border-1 border-[#2c2c2c] px-2 bg-black text-[#dcdcdc] font-normal text-base
+             hover:scale-105 transition-transform duration-200 ease-out -translate-y-1"
       >
-        <FaLinkedin />
-      </Button>
-    </Link>
+        {/*<FaDownload className="text-lg" />*/}
+        Download CV
+      </a>
 
-    {/**/}
-    <Link
-      href={"https://x.com/"}
-      target="_blank"
-      className={isMobile ? "w-full" : ""}
-    >
-      <Button
-        className={`
+      <Link
+        href={"https://www.linkedin.com/in/ishadh-ifham-b5a7a2357"}
+        target="_blank"
+        className={isMobile ? "w-full" : ""}
+      >
+        <Button
+          className={`
     ${isMobile ? "w-full" : ""}
     rounded-2xl
     sm:p-5
@@ -168,14 +156,11 @@ const ContactButton = ({ isMobile = false, onLinkClick }) => (
     hover:scale-110
     transition-transform duration-200 ease-out
   `}
-      >
-        <img
-          src="/X2.svg" // Add the X ur that is in the public folder here
-          alt="X / Twitter"
-          className="h-5 w-auto hover:scale-110 transition-transform duration-200 text-white ease-out"
-        />
-      </Button>
-    </Link>
+        >
+          <FaLinkedin />
+        </Button>
+      </Link>
+    </div>
   </motion.div>
 );
 

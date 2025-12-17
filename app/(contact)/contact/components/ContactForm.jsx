@@ -1,12 +1,14 @@
 "use client";
+
 import React, { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
+import { toast } from "sonner";
 
-const ContactForm = ({ onSubmit }) => {
+const ContactForm = () => {
   const {
     register,
     handleSubmit,
@@ -15,18 +17,22 @@ const ContactForm = ({ onSubmit }) => {
   } = useForm();
 
   const formRef = useRef();
-  //   console.log(`env : ${process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID}`)
 
   const onSubmitHandler = async (data) => {
-    await onSubmit(data);
-    await emailjs.sendForm(
-      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-      formRef.current,
-      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-    );
+    try {
+      await emailjs.sendForm(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+      );
 
-    reset();
+      reset();
+      toast.success("Message sent successfully!");
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to send message. Please try again.");
+    }
   };
 
   return (
@@ -36,8 +42,8 @@ const ContactForm = ({ onSubmit }) => {
       className="space-y-6"
     >
       <div className="space-y-4">
-        {/* Name and Email in a 2-column grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* Name - Use 'from_name' for EmailJS */}
           <div className="space-y-2">
             <label
               htmlFor="name"
@@ -46,20 +52,22 @@ const ContactForm = ({ onSubmit }) => {
               Your Name
             </label>
             <Input
-              {...register("name", { required: "Name is required" })}
+              {...register("from_name", { required: "Name is required" })}
               id="name"
               type="text"
-              name="name"
+              name="from_name"
               placeholder="Ishadh Ifham"
-              className="rounded-lg border-primary/20 w-full"
+              className="rounded-lg border-primary/20 w-full focus:ring-2 focus:ring-primary focus:border-primary"
+              disabled={isSubmitting}
             />
-            {errors.name && (
+            {errors.from_name && (
               <span className="text-xs text-red-500 block mt-1">
-                {errors.name.message}
+                {errors.from_name.message}
               </span>
             )}
           </div>
 
+          {/* Email - Use 'from_email' or 'reply_to' for EmailJS */}
           <div className="space-y-2">
             <label
               htmlFor="email"
@@ -68,7 +76,7 @@ const ContactForm = ({ onSubmit }) => {
               Email
             </label>
             <Input
-              {...register("email", {
+              {...register("from_email", {
                 required: "Email is required",
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -77,19 +85,20 @@ const ContactForm = ({ onSubmit }) => {
               })}
               id="email"
               type="email"
-              name="email"
+              name="from_email"
               placeholder="ishadh@example.com"
-              className="rounded-lg border-primary/20 w-full"
+              className="rounded-lg border-primary/20 w-full focus:ring-2 focus:ring-primary focus:border-primary"
+              disabled={isSubmitting}
             />
-            {errors.email && (
+            {errors.from_email && (
               <span className="text-xs text-red-500 block mt-1">
-                {errors.email.message}
+                {errors.from_email.message}
               </span>
             )}
           </div>
         </div>
 
-        {/* Message field - full width */}
+        {/* Message */}
         <div className="space-y-2">
           <label
             htmlFor="message"
@@ -102,7 +111,8 @@ const ContactForm = ({ onSubmit }) => {
             id="message"
             name="message"
             placeholder="Write your message here..."
-            className="rounded-lg border-primary/20 min-h-[150px] w-full resize-y"
+            className="rounded-lg border-primary/20 min-h-[150px] w-full resize-y focus:ring-2 focus:ring-primary focus:border-primary"
+            disabled={isSubmitting}
           />
           {errors.message && (
             <span className="text-xs text-red-500 block mt-1">
