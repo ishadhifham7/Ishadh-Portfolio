@@ -47,7 +47,7 @@ const textAnimation = {
 
 const HeroSection = () => {
   return (
-    <section className="min-h-[calc(100vh-140px)] flex items-center justify-center relative">
+    <section className="min-h-[calc(100vh-140px)] flex items-center justify-center relative mt-100">
       <BackgroundPresets.Minimal />
 
       <div className="container mx-auto px-6">

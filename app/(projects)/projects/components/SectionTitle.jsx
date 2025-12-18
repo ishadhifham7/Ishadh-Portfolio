@@ -20,9 +20,8 @@ const SectionTitle = () => (
         <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
           A curated selection of my professional work and personal projects,
           showcasing expertise in{" "}
-          <span className="text-primary">full-stack development</span>,{" "}
-          <span className="text-primary">UI/UX design</span>, and{" "}
-          <span className="text-primary">cloud architecture</span>.
+          <span className="text-primary">Full-Stack Development</span> and{" "}
+          <span className="text-primary">System Architecture</span>.
         </p>
       </div>
 

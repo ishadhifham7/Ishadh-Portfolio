@@ -126,7 +126,7 @@ const SkillsSection = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="space-y-20"
+          className="space-y-8 md:space-y-20"
         >
           {/* Header */}
           <div className="max-w-2xl mx-auto text-center space-y-6">
@@ -152,10 +152,10 @@ const SkillsSection = () => {
           {/* Radar Charts Row (Technical + Soft Skills) */}
           <motion.div
             variants={itemAnimation}
-            className="w-full max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-12"
+            className="w-full max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-2 md:gap-12 md:mb-8"
           >
             {/* Technical Skills Chart */}
-            <div className="w-full md:w-1/2 h-[420px]">
+            <div className="w-full md:w-1/2 h-[320px] lg:h-[360px]">
               <p className="text-center text-muted-foreground mt-2">
                 Technical Skills
               </p>
@@ -163,7 +163,7 @@ const SkillsSection = () => {
             </div>
 
             {/* Soft Skills Chart */}
-            <div className="w-full md:w-1/2 h-[420px]">
+            <div className="w-full md:w-1/2 h-[320px] lg:h-[360px]">
               <p className="text-center text-muted-foreground mt-2">
                 Soft Skills
               </p>
@@ -172,7 +172,10 @@ const SkillsSection = () => {
           </motion.div>
 
           {/* Categories */}
-          <motion.div variants={containerAnimation} className="space-y-16">
+          <motion.div
+            variants={containerAnimation}
+            className="space-y-16 md:mt-8"
+          >
             {skills.map((category, index) => (
               <CategorySection key={index} category={category} />
             ))}

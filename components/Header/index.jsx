@@ -3,20 +3,14 @@ import React, { useState } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
 import { Button } from "@/components/ui/button";
 import { config } from "@/config";
-import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
-import {
-  FaDiscord,
-  FaGithub,
-  FaMapPin,
-  FaLinkedin,
-  FaTwitter,
-} from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 
 const NAV_ITEMS = config.NAV_ITEMS;
 
+/* -------------------- NavLink -------------------- */
 const NavLink = ({ href, label, isMobile = false }) => {
   const pathname = usePathname();
   const isActive = pathname === href;
@@ -35,18 +29,10 @@ const NavLink = ({ href, label, isMobile = false }) => {
         {label}
         {isActive && (
           <motion.div
-            className="absolute inset-0 bg-secondary/30  rounded-lg backdrop-blur-sm"
+            className="absolute inset-0 bg-secondary/30 rounded-lg backdrop-blur-sm"
             layoutId="activeNavBackground"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              type: "spring",
-              stiffness: 300,
-              damping: 30,
-            }}
-            style={{
-              zIndex: -1,
-            }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            style={{ zIndex: -1 }}
           />
         )}
       </motion.span>
@@ -54,195 +40,180 @@ const NavLink = ({ href, label, isMobile = false }) => {
   );
 };
 
+/* -------------------- Logo -------------------- */
 const Logo = ({ isMobile = false }) => (
   <motion.div
     initial={{ opacity: 0, x: -20 }}
     animate={{ opacity: 1, x: 0 }}
     transition={{ duration: 0.5 }}
-    suppressHydrationWarning
   >
     <Link
       href="/"
-      className="flex items-center space-x-2 hover:opacity-90 transition-opacity"
+      className="flex items-center gap-2 hover:opacity-90 transition-opacity"
     >
-      <motion.div whileHover={{ opacity: 0.5 }} whileTap={{ scale: 0.95 }}>
-        <img
-          src="/logo3.png" // path to your image
-          alt="icon"
-          className="w-6 h-6 object-contain"
-        />
-      </motion.div>
-      <motion.span
-        className={`text-gray-300 font-semibold ${
-          isMobile ? "hidden" : "text-base sm:text-lg"
-        }`}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.2 }}
-        suppressHydrationWarning
-      >
-        <span className="hidden sm:inline">{config.developer.name} Ifham</span>
-        {/* <span className="sm:hidden">{config.developer.name}</span> */}
-      </motion.span>
+      <img src="/logo3.png" alt="logo" className="w-6 h-6 object-contain" />
+      {!isMobile && (
+        <span className="hidden sm:inline text-gray-300 font-semibold text-lg">
+          {config.developer.name} Ifham
+        </span>
+      )}
     </Link>
   </motion.div>
 );
 
+/* -------------------- Navigation -------------------- */
 const Navigation = ({ isMobile = false, onLinkClick }) => (
-  <motion.nav
-    className={
-      isMobile ? "flex flex-col space-y-4" : "hidden md:flex space-x-2"
-    }
-    initial={isMobile ? { opacity: 0 } : { opacity: 0, y: -20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ delay: isMobile ? 0 : 0.3, duration: 0.5 }}
-    suppressHydrationWarning
-  >
-    {NAV_ITEMS.map((item, index) => (
-      <motion.div
-        key={item.href}
-        initial={isMobile ? { opacity: 0, x: -20 } : { opacity: 0, y: -20 }}
-        animate={{ opacity: 1, x: 0, y: 0 }}
-        transition={{ delay: isMobile ? index * 0.1 : 0.1 * index }}
-        onClick={onLinkClick}
-        suppressHydrationWarning
-      >
+  <nav className={isMobile ? "flex flex-col gap-4" : "hidden md:flex gap-2"}>
+    {NAV_ITEMS.map((item) => (
+      <div key={item.href} onClick={onLinkClick}>
         <NavLink {...item} isMobile={isMobile} />
-      </motion.div>
+      </div>
     ))}
-  </motion.nav>
+  </nav>
 );
 
+/* -------------------- Contact Button -------------------- */
 const ContactButton = ({ isMobile = false, onLinkClick }) => (
-  <motion.div
-    className={`flex items-center ${
-      isMobile ? "w-full justify-center mt-4" : ""
-    }`}
-    initial={{ opacity: 0, x: isMobile ? 0 : 20 }}
-    animate={{ opacity: 1, x: 0 }}
-    transition={{ delay: isMobile ? 0.5 : 0.4, duration: 0.5 }}
+  <div
+    className={`flex items-center gap-3 ${isMobile ? "justify-center" : ""}`}
     onClick={onLinkClick}
-    suppressHydrationWarning
   >
-    <div>
-      <a
-        href="/Ishadh Ifham CV.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-        download
-        className="inline-flex items-center gap-2 rounded-xl border border-1 border-[#2c2c2c] px-2 bg-black text-[#dcdcdc] font-normal text-base
-             hover:scale-105 transition-transform duration-200 ease-out -translate-y-1"
-      >
-        {/*<FaDownload className="text-lg" />*/}
-        Download CV
-      </a>
+    {/* Download CV */}
+    <a
+      href="/Ishadh Ifham CV.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+      download
+      className="
+        inline-flex items-center justify-center
+        rounded-xl
+        border border-[#2c2c2c]
+        px-2 py-1
+        bg-black
+        text-[#dcdcdc]
+        text-base
+        hover:scale-105
+        transition
+        whitespace-nowrap
+      "
+    >
+      Download CV
+    </a>
 
-      <Link
-        href={"https://www.linkedin.com/in/ishadh-ifham-b5a7a2357"}
-        target="_blank"
-        className={isMobile ? "w-full" : ""}
+    {/* LinkedIn */}
+    <Link
+      href="https://www.linkedin.com/in/ishadh-ifham-b5a7a2357"
+      target="_blank"
+    >
+      <Button
+        className="
+          rounded-2xl
+          text-xl text-white
+          bg-transparent
+          hover:bg-transparent
+          hover:scale-110
+          transition-transform
+        "
       >
-        <Button
-          className={`
-    ${isMobile ? "w-full" : ""}
-    rounded-2xl
-    sm:p-5
-    text-xl sm:text-2xl
-    text-white
-    bg-transparent
-    hover:bg-transparent
-    active:bg-transparent
-    focus:bg-transparent
-    hover:scale-110
-    transition-transform duration-200 ease-out
-  `}
-        >
-          <FaLinkedin />
-        </Button>
-      </Link>
-    </div>
-  </motion.div>
+        <FaLinkedin />
+      </Button>
+    </Link>
+  </div>
 );
 
+/* -------------------- Header -------------------- */
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-  };
 
   return (
     <>
       <motion.header
-        className="py-4 sm:py-6 md:py-9 z-50 text-white"
+        className="
+          w-full
+          bg-transparent
+          text-white
+          py-6
+          mb-4
+        "
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        suppressHydrationWarning
+        transition={{ duration: 0.4 }}
       >
-        <div className="container mx-auto flex items-center justify-between md:px-64 px-4 sm:px-6">
+        <div
+          className="
+            max-w-[1400px]
+            mx-auto
+            flex
+            items-center
+            justify-between
+            px-4
+            sm:px-6
+            lg:px-12
+          "
+        >
           <Logo />
+
+          {/* Desktop Nav */}
           <Navigation />
-          <div className="hidden md:block">
+
+          {/* Desktop Actions */}
+          <div className="hidden md:flex items-center gap-2">
             <ContactButton />
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            onClick={toggleMobileMenu}
-            className="md:hidden p-2 text-gray-300 hover:text-white transition-colors"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 text-gray-300 hover:text-white"
             aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? (
-              <HiX className="w-6 h-6" />
-            ) : (
-              <HiMenu className="w-6 h-6" />
-            )}
+            {isMobileMenuOpen ? <HiX size={24} /> : <HiMenu size={24} />}
           </button>
         </div>
       </motion.header>
 
-      {/* Mobile Menu */}
+      {/* ---------------- Mobile Menu ---------------- */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <>
-            {/* Backdrop */}
+            {/* Backdrop with blur */}
             <motion.div
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 md:hidden"
-              onClick={closeMobileMenu}
-              suppressHydrationWarning
+              onClick={() => setIsMobileMenuOpen(false)}
             />
 
             {/* Mobile Menu Panel */}
             <motion.div
+              className="fixed top-0 right-0 h-full w-3/4 max-w-xs
+             bg-black/95 z-50 md:hidden"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 h-full w-64 bg-black/95 backdrop-blur-md border-l border-white/10 z-50 md:hidden overflow-y-auto"
-              suppressHydrationWarning
+              transition={{ type: "spring", stiffness: 200, damping: 25 }}
             >
               <div className="flex flex-col h-full p-6">
-                {/* Mobile Logo */}
-                <div className="mb-8">
-                  <Logo isMobile={true} />
+                {/* Logo */}
+                <Logo isMobile />
+
+                {/* Navigation */}
+                <div className="mt-8 flex-1">
+                  <Navigation
+                    isMobile
+                    onLinkClick={() => setIsMobileMenuOpen(false)}
+                  />
                 </div>
 
-                {/* Mobile Navigation */}
-                <div className="flex-1">
-                  <Navigation isMobile={true} onLinkClick={closeMobileMenu} />
+                {/* Bottom Buttons */}
+                <div className="mt-auto pt-6 border-t border-white/10">
+                  <ContactButton
+                    isMobile
+                    onLinkClick={() => setIsMobileMenuOpen(false)}
+                  />
                 </div>
-
-                {/* Mobile Contact Button */}
-                <ContactButton isMobile={true} onLinkClick={closeMobileMenu} />
               </div>
             </motion.div>
           </>

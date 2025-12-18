@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useState } from "react";
 import {
   Radar,
   RadarChart,
@@ -17,17 +18,26 @@ const SoftArsenal = () => {
     { category: "Adaptability", value: 90 },
   ];
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   return (
-    <div className="w-full h-[420px]">
+    <div className="w-full h-[320px] sm:h-[420px] overflow-hidden">
       <ResponsiveContainer>
-        <RadarChart data={data} outerRadius="80%">
+        <RadarChart data={data} outerRadius={isMobile ? "65%" : "72%"}>
           <PolarGrid stroke="#c1c1c1ff" />
 
           <PolarAngleAxis
             dataKey="category"
             tick={{
               fill: "#ffffffff",
-              fontSize: 14,
+              fontSize: isMobile ? 9 : 13,
               fontWeight: 500,
             }}
           />
