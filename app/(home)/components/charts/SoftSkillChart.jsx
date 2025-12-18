@@ -28,7 +28,7 @@ const SoftArsenal = () => {
   }, []);
 
   return (
-    <div className="w-full h-[320px] sm:h-[420px] overflow-hidden">
+    <div className="w-full h-[280px] sm:h-[420px] overflow-hidden">
       <ResponsiveContainer>
         <RadarChart data={data} outerRadius={isMobile ? "65%" : "72%"}>
           <PolarGrid stroke="#c1c1c1ff" />
