@@ -21,7 +21,7 @@ export const metadata = {
     icon: "/new-logo.png",
   },
   description:
-    "Experienced fullstack developer specializing in modern web technologies. View my projects, skills, and experience.",
+    "Full-stack developer and Computer Science Undergraduate, building modern web products with a focus on clean design, scalable systems, and real-world impact.",
   keywords:
     "fullstack developer,backend developer, frontend developer, web development, JavaScript,JS, React, Node.js, portfolio",
   author: "Ishadh Ifham",
