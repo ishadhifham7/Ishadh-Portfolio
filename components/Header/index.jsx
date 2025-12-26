@@ -51,7 +51,7 @@ const Logo = ({ isMobile = false }) => (
       href="/"
       className="flex items-center gap-2 hover:opacity-90 transition-opacity"
     >
-      <img src="/logo3.png" alt="logo" className="w-6 h-6 object-contain" />
+      <img src="/new-logo.png" alt="logo" className="w-6 h-6 object-contain" />
       {!isMobile && (
         <span className="hidden sm:inline text-gray-300 font-semibold text-lg">
           {config.developer.name} Ifham

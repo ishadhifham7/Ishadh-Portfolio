@@ -18,7 +18,7 @@ const geistSans = localFont({
 export const metadata = {
   title: "Ishadh's Portfolio",
   icons: {
-    icon: "/logo3.png",
+    icon: "/new-logo.png",
   },
   description:
     "Experienced fullstack developer specializing in modern web technologies. View my projects, skills, and experience.",
