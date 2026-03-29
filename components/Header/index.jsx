@@ -78,12 +78,11 @@ const ContactButton = ({ isMobile = false, onLinkClick }) => (
     className={`flex items-center gap-3 ${isMobile ? "justify-center" : ""}`}
     onClick={onLinkClick}
   >
-    {/* Download CV */}
+    {/* View CV */}
     <a
       href="/Ishadh Ifham CV.pdf"
       target="_blank"
       rel="noopener noreferrer"
-      download
       className="
         inline-flex items-center justify-center
         rounded-xl
@@ -97,7 +96,7 @@ const ContactButton = ({ isMobile = false, onLinkClick }) => (
         whitespace-nowrap
       "
     >
-      Download CV
+      View CV
     </a>
 
     {/* LinkedIn */}
