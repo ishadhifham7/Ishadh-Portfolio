@@ -77,11 +77,11 @@ const projects = [
   },
   {
     id: 6,
-    name: "Task Manager App",
+    name: "Subscription Management Dashboard",
     description:
-      "Desktop application to manage and prioritize daily tasks efficiently.",
+      "Tracks recurring payments and provides reminders to prevent missed billing cycles.",
     language: "Java",
-    topics: ["Desktop App", "Backend", "Productivity", "OOP"],
+    topics: ["Frontend", "Backend", "Structured Database"],
   },
 ];
 
