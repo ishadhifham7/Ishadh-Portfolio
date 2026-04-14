@@ -62,8 +62,8 @@ export const config = {
       id: 3,
       title: "Subscription Management Dashboard",
       description:
-        "A 24-hour hackathon-built travel app showcasing 200+ key Sri Lankan locations. Features an interactive map with hidden gems and scam-prone zones to enhance traveler discovery and safety, helping users explore confidently.",
-      image: "/projects/tourist.jpg",
+        "A subscription management system that tracks recurring payments, organizes subscriptions, and provides reminders to prevent missed billing cycles.",
+      image: "/projects/sub-manager.png",
       technologies: [
         "Spring Boot",
         "React.js",
