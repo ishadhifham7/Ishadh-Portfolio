@@ -81,7 +81,7 @@ const HeroSection = () => {
                 variants={textAnimation}
                 className="block text-white/60 text-2xl md:text-4xl"
               >
-                Full-Stack Software Engineer
+                Aspiring Full-Stack Engineer
               </motion.span>
             </motion.h1>
           </div>
