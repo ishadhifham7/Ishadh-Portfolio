@@ -63,17 +63,31 @@ const projects = [
   },
   {
     id: 4,
-    name: "Productivity Dashboard",
-    description: "Manage tasks in real-time with authentication.",
-    language: "JavaScript",
-    topics: ["Frontend", "Backend", "Task Management", "Fullstack"],
+    name: "AI Interview System",
+    description:
+      "Automated interview platform with AI-generated questions and feedback.",
+    language: "TypeScript",
+    topics: [
+      "Frontend",
+      "Backend",
+      "Real-Time Interaction",
+      "Company Research",
+    ],
   },
   {
     id: 5,
-    name: "Habit Tracker Mobile App",
-    description: "Track and build daily habits with real-time updates",
+    name: "CalenderBot - AI Calendar Assistant",
+    description:
+      "AI-powered calendar assistant integrated with Google Calendar.",
     language: "TypeScript",
-    topics: ["Mobile", "Productivity", "Data Management", "UI/UX"],
+    topics: [
+      "Fullstack",
+      "Productivity",
+      "Data Management",
+      "UI/UX",
+      "AI Chatbot",
+      "Intelligent Scheduling",
+    ],
   },
   {
     id: 6,
