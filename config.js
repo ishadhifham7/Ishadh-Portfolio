@@ -41,6 +41,44 @@ export const config = {
     },
     {
       id: 2,
+      title: "AI Interview System",
+      description:
+        "An AI-powered interview preparation platform that simulates real interview scenarios, provides instant feedback, and helps users improve their interviewing skills.",
+      image: "/projects/interview.jpg",
+      technologies: [
+        "Typescript",
+        "React.js",
+        "Node.js",
+        "Express",
+        "Firebase",
+        "Gemma 4",
+        "Tavily",
+        "Firecrawl",
+        "Docker",
+      ],
+      github: "#",
+      demo: "#",
+    },
+    {
+      id: 3,
+      title: "CalenderBot - AI-Powered Google Calendar Assistant",
+      description:
+        "An AI-powered calendar assistant that integrates with Google Calendar to provide smart scheduling, reminders, and productivity insights.",
+      image: "/projects/calender.jpg",
+      technologies: [
+        "Typescript",
+        "React.js",
+        "Node.js",
+        "Express",
+        "Firebase",
+        "llama 3.1 Api",
+        "Google Calendar API",
+      ],
+      github: "#",
+      demo: "#",
+    },
+    {
+      id: 4,
       title: "SaloBook - Salon Lead Management Platform",
       description:
         "A full-stack platform that streamlines lead management for salons. Admins and acquisition teams can record, track, and prioritize over 100 salon leads, centralize client data, and collaborate effectively, reducing manual onboarding time by 40%.",
@@ -59,7 +97,7 @@ export const config = {
       demo: "#",
     },
     {
-      id: 3,
+      id: 5,
       title: "Subscription Management Dashboard",
       description:
         "A subscription management system that tracks recurring payments, organizes subscriptions, and provides reminders to prevent missed billing cycles.",
@@ -75,7 +113,7 @@ export const config = {
       demo: "#",
     },
     {
-      id: 4,
+      id: 6,
       title: "Sri Lanka Travel Explorer",
       description:
         "A 24-hour hackathon-built travel app showcasing 200+ key Sri Lankan locations. Features an interactive map with hidden gems and scam-prone zones to enhance traveler discovery and safety, helping users explore confidently.",
@@ -85,7 +123,7 @@ export const config = {
       demo: "#",
     },
     {
-      id: 5,
+      id: 7,
       title: "Productivity Dashboard",
       description:
         "A React-based dashboard enabling users to manage project-based tasks in real-time. Supports secure authentication, task prioritization, and full CRUD operations using Firestore, helping users organize 30+ tasks per project efficiently.",
@@ -95,7 +133,7 @@ export const config = {
       demo: "#",
     },
     {
-      id: 6,
+      id: 8,
       title: "Habit Tracker Mobile App",
       description:
         "A mobile app that helps users build and track daily habits. Built with React Native and Appwrite, it supports real-time task tracking, secure authentication, and data storage with Node.js, Express, and MongoDB, all wrapped in a sleek NativeWind UI.",
@@ -112,7 +150,7 @@ export const config = {
       demo: "#",
     },
     {
-      id: 7,
+      id: 9,
       title: "E-Commerce Library",
       description:
         "A full-stack e-commerce platform for managing products, orders, and users. Built with React, Node.js, and MongoDB, it features REST APIs for seamless client-server interaction and a responsive UI for easy product browsing and management.",
@@ -122,7 +160,7 @@ export const config = {
       demo: "#",
     },
     {
-      id: 8,
+      id: 10,
       title: "SDG Zero Hunger Awareness Website",
       description:
         "A responsive website raising awareness for the Zero Hunger Sustainable Development Goal. Built with HTML, CSS, and JavaScript, it educates users on global hunger issues and promotes actions to support food security initiatives.",
@@ -132,7 +170,7 @@ export const config = {
       demo: "#",
     },
     {
-      id: 9,
+      id: 11,
       title: "Task Manager Application",
       description:
         "A desktop application built with Java to manage daily tasks and projects efficiently. Features task creation, prioritization, and tracking to boost productivity.",
